@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Demo</title>
+</head>
+<body>
+
+<form th:action="@{/registerAction}" th:object="${user}" method="post">
+    <label for="username">UserName:</label><br>
+    <input type="text" th:field="*{userName}" id="username" name="username" required><br>
+    <label for="password">Password:</label><br>
+    <input type="text" th:field="*{password}" id="password" name="password" required>
+    <div>
+        <button type="submit">注册</button>
+    </div>
+</form>
+<div th:if="${param.success}" class="alert alert-success">
+    You are registered successfully
+</div>
+<div th:if="${param.fail}" class="alert alert-warning">
+    There is already an account registered with the same username
+</div>
+
+
+
+</body>
+</html>

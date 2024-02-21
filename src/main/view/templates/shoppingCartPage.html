@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:each="goods:${selectedGoods}" th:action="@{/paySelectedGoods}" method="post">
+    <td th:text="${goods.getGoodsName()}"></td><br>
+    <td th:text="${goods.getPrice()}"></td><br>
+    <img th:src="${goods.getImg()}"> <br>
+    <td th:text="${totalPrice}"></td><br>
+</form>
+
+</body>
+</html>
