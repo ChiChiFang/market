@@ -23,7 +23,7 @@ public class IndexController {
     @Autowired
     GoodsDao goodsDao;
 
-    List<String> goodsIds = new ArrayList<>();
+    public static List<String> goodsIds = new ArrayList<>();
 
     @RequestMapping("/")
     String index(Model model) {
@@ -77,5 +77,7 @@ public class IndexController {
         model.addAttribute("currentUser", LoginController.currentUser);
         return "shoppingCartPage";
     }
+
+
 
 }

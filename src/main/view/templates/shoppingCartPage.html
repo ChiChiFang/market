@@ -3,15 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 
-<form th:each="goods:${selectedGoods}" th:action="@{/paySelectedGoods}" method="post">
+<form th:each="goods:${selectedGoods}" th:action="@{/updateCart}" method="post">
     <td th:text="${goods.getGoodsName()}"></td><br>
     <td th:text="${goods.getPrice()}"></td><br>
     <img th:src="${goods.getImg()}"> <br>
-    <td th:text="${totalPrice}"></td><br>
+    <button type="submit" name="action"  th:value="${goods.getGoodsId()} + '+'">+</button><br>
+<!--    <td id="count"> </td><br>-->
+    <button type="submit" name="action"  th:value="${goods.getGoodsId()} + '-'">-</button><br>
+
 </form>
+
+<script>
+    var count = 1;
+    //document.getElementById("count").innerHTML = count;
+
+    function addItem(){
+        count++;
+        console.log("add() has been called" + count);
+        document.getElementById("count").innerHTML = count;
+    }
+
+    function minusItem(){
+        if(count === 0) count -= 0;
+        else count--;
+        console.log("minus() has been called" + count);
+        document.getElementById("count").innerHTML = count;
+    }
+</script>
+
+<form th:action="@{/paySelectedGoods}" method="post">
+    <td th:text="${totalPrice}"></td><br>
+    <button type="submit">Make a Payment</button>
+</form>
+
 
 </body>
 </html>
